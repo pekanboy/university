@@ -1,0 +1,24 @@
+.query-menu {
+    /*font-family: "Apple SD Gothic Neo", sans-serif;*/
+    font-size: 1.2rem;
+
+    max-width: 600px;
+    min-width: 350px;
+
+    margin: 0 auto;
+}
+
+.query-menu__title {
+    font-size: 1.4rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.query-menu > ol {
+    list-style: decimal-leading-zero;
+}
+
+.query-menu > ol > li {
+    margin-bottom: 5px;
+}
+

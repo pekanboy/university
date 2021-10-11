@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/styles/base.css">
-    {% block links %}{% endblock %}
+    <link rel="shortcut icon" href="../static/image/favicon.ico">
+    <link rel="stylesheet" href="../static/style/base.css">
+    <link rel="stylesheet" href="../static/style/query.css">
+    <link rel="stylesheet" href="../static/style/index.css">
+
     {% block title %}{% endblock %}
 </head>
 <body>
-    <div class="root">
-        <div class="container">
-            {% block content %}{% endblock %}
-        </div>
+    <div class="container">
+        <div class="page-title">{% block pagetitle %}{% endblock %}</div>
+        {% block content %}{% endblock %}
     </div>
 </body>
 

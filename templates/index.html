@@ -4,11 +4,15 @@
     <title>Service</title>
 {% endblock %}
 
+{% block pagetitle %}Welcome to information system{% endblock %}
+
 {% block content %}
-    <div class="main__title">Welcome to information system</div>
+    <div class="query-menu">
+        <div class="query-menu__title">Basic queries</div>
+        <ol>
+            {% for query in querys %}
+                <li><a href={{query.url}}>{{ query.name }}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
 {% endblock %}
-
-{% block links %}
-    <link rel="stylesheet" href="../static/styles/index.css">
-{% endblock %}
-
