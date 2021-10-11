@@ -29,3 +29,31 @@ form.query-form > button {
 form.query-form > button:hover {
     background: #defaff;
 }
+
+.response-block {
+    max-width: 400px;
+    margin: 40px auto 0;
+
+    font-size: 1rem;
+}
+
+.return-a {
+    text-align: center;
+
+    margin: 10px auto 0;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+table {
+    max-width: 400px;
+    border-collapse: collapse;
+}
+
+th {
+    width: 33%;
+    text-align: left;
+
+}

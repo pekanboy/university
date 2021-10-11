@@ -8,11 +8,10 @@
 
 {% block content %}
     <div class="query-menu">
-        <div class="query-menu__title">Basic queries</div>
+        <div class="query-menu__title">Main menu</div>
         <ol>
-            {% for query in querys %}
-                <li><a href={{query.url}}>{{ query.name }}</a></li>
-            {% endfor %}
+            <li><a href={{ url_for('dbHandler.menu') }}>Go to requests</a></li>
+            <li><a href="/exit">Exit</a></li>
         </ol>
     </div>
 {% endblock %}

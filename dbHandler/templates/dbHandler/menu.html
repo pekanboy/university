@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Service</title>
+{% endblock %}
+
+{% block pagetitle %}Query`s menu{% endblock %}
+
+{% block content %}
+    <div class="query-menu">
+        <div class="query-menu__title">Basic queries</div>
+        <ol>
+            {% for query in querys %}
+                <li><a href={{query.url}}>{{ query.name }}</a></li>
+            {% endfor %}
+        </ol>
+        <a href="/" class="return-a">Главное меню</a>
+    </div>
+{% endblock %}
