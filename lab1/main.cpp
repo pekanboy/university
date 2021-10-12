@@ -59,7 +59,7 @@ int main() {
 
     int sequence = pow(2, cells) - 1;
     int curr_sequence = sequence;
-    sequence = sequence << cells;
+    sequence = sequence << (count - cells);
 
     int i = 0;
     do {
