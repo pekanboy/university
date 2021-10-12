@@ -1,9 +1,6 @@
 #include <iostream>
 #include <cmath>
 
-unsigned char word[] = "INTEGRAL";
-int cells = 4;
-
 int transposition(int &seq, int count) {
     int loser = 1;
 
@@ -37,10 +34,10 @@ int shift(int seq, int count) {
     return res;
 }
 
-void printSequence(int str, int count) {
+void printSequence(int sequence, int count, std::string word) {
     std::cout << '{';
     for(int i = 0; i < count; ++i) {
-        bool digit = (str >> i) & 1;
+        bool digit = (sequence >> i) & 1;
         if (digit) {
             std::cout << word[i];
         }
@@ -55,7 +52,10 @@ unsigned char nextSequence(int seq, int count) {
 }
 
 int main() {
-    int count = sizeof(word)/sizeof(*word) - 1;
+    std::string word = "INTEGRAL";
+    int cells = 4;
+
+    int count = word.size();
 
     int sequence = pow(2, cells) - 1;
     int curr_sequence = sequence;
@@ -64,14 +64,14 @@ int main() {
     int i = 0;
     do {
         ++i;
-        printSequence(curr_sequence, count);
+        printSequence(curr_sequence, count, word);
         curr_sequence = nextSequence(curr_sequence, count);
         if (i % 5 == 0) {
             std::cout << std::endl;
         }
     } while(sequence != curr_sequence);
-    printSequence(curr_sequence, count);
+    printSequence(curr_sequence, count, word);
 
-    std::cout << "\nВыведено комбинаций:" << ++i << std::endl;
+    std::cout << "\nCombinations displayed:" << ++i << std::endl;
     return 0;
 }
