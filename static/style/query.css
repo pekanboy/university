@@ -1,43 +1,24 @@
 .description {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
 }
 
 form.query-form {
-    display: flex;
-    flex-direction: column;
-
     max-width: 350px;
     margin: 0 auto;
 
     padding: 10px 5px;
 }
 
-form.query-form > input {
+form.query-form > div {
     font-size: 1rem;
     margin-bottom: 15px;
-    height: 20px;
 }
 
 form.query-form > button {
-    font-size: 1rem;
-    border: 1px solid #0088cc;
-    color: #0088cc;
-    background: white;
-    height: 20px;
+    width: 100%;
 }
 
-form.query-form > button:hover {
-    background: #defaff;
-}
-
-.response-block {
-    max-width: 400px;
-    margin: 40px auto 0;
-
-    font-size: 1rem;
-}
-
-.return-a {
+.return-btn {
     text-align: center;
 
     margin: 10px auto 0;
@@ -45,15 +26,4 @@ form.query-form > button:hover {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-}
-
-table {
-    max-width: 400px;
-    border-collapse: collapse;
-}
-
-th {
-    width: 33%;
-    text-align: left;
-
 }

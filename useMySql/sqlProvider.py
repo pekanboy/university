@@ -29,4 +29,7 @@ class SQLProvider:
 
                 for row in cursor.fetchall():
                     result.append(dict(zip(schema, row)))
-                return result
+                return {
+                    "schema": schema,
+                    "result": result
+                }

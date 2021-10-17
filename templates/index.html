@@ -1,17 +1,31 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Service</title>
+<title>Главное меню</title>
 {% endblock %}
 
-{% block pagetitle %}Welcome to information system{% endblock %}
+{% block pagetitle %}Добро пожаловать в информационную систему{% endblock %}
 
 {% block content %}
-    <div class="query-menu">
-        <div class="query-menu__title">Main menu</div>
-        <ol>
-            <li><a href={{ url_for('dbHandler.menu') }}>Go to requests</a></li>
-            <li><a href="/exit">Exit</a></li>
-        </ol>
-    </div>
+<div class="query-menu">
+    <div class="query-menu__title">Главное меню</div>
+    <ul class="list-group list-group-numbered">
+        <li class="list-group-item">
+            <a href={{url_for('dbHandler.menu')}}>Работа с запросами</a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="disabled" tabindex="-1">Работа с отчетами</a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="disabled" tabindex="-1">Работа с бизнес процессом</a>
+        </li>
+        <li class="list-group-item">
+            {% if not isAuth %}
+                <a href="#" class="disabled" tabindex="-1">Авторизироваться</a>
+            {% else %}
+                <a href="/exit">Выход</a>
+            {% endif %}
+        </li>
+    </ul>
+</div>
 {% endblock %}
