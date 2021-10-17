@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Request</title>
+{% endblock %}
+
+{% block pagetitle %}
+    <div class="description">
+        {{ description }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="query-menu">
+        <form class="query-form" action="{{ url_for('dbHandler.allClientsNotConnectForPeriod') }}" method="post">
+            <label>Enter the date before</label>
+            <input type="date" placeholder="enter the date before" name="before" value={{vb}}>
+            <label>Enter the date after</label>
+            <input type="date" placeholder="enter the date after" name="after" value={{va}}>
+            <button type="submit">Get users</button>
+        </form>
+    </div>
+
+    <a href="/db" class="return-a">Query menu</a>
+
+    {% if isResponse %}
+        <div class="response-block">
+            {% if data %}
+                Response. Before date: {{ vb }}. After date: {{ va }}.
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>address</th>
+                    </tr>
+                    {% for user in data %}
+                        <tr style="margin-bottom: 10px">
+                            <th>{{ user.id }}</th>
+                            <th>{{ user.name }}</th>
+                            <th>{{ user.address }}</th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                Noting was found
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
