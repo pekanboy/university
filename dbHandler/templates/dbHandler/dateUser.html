@@ -12,19 +12,29 @@
 
 {% block content %}
 <div class="query-menu">
-    <form class="query-form" action="{{url_for('dbHandler.allClientsNotConnectForPeriod')}}" method="post">
+    <form class="query-form" action="{{url_for('dbHandler.arendatorForDate')}}" method="post">
         <div class="form-floating">
-            <input type="date" class="form-control" id="date_before" name="before">
-            <label for="date_before">Введите начальную дату</label>
-        </div>
-        <div class="form-floating">
-            <input type="date" class="form-control" id="date_after" name="after">
-            <label for="date_after">Введите конечную дату</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+            <label for="date">Введите дату</label>
         </div>
         <button class="btn btn-primary" type="submit">Найти</button>
     </form>
 
-    <a href="/db" class="return-btn">Меню запросов</a>
+    <a href="/query" class="return-btn">Меню запросов</a>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+    form = document.querySelector('.query-form')
+    form.addEventListener('submit', (event) => {
+        if (event.target.date.value.length === 0) {
+            event.preventDefault();
+
+        }
+
+        event.classList.add('was-validated')
+    });
+</script>
 {% endblock %}
