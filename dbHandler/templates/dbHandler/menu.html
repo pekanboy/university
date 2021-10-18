@@ -11,7 +11,7 @@
         <div class="query-menu__title">Основные запросы</div>
         <ul class="list-group list-group-numbered">
             {% for query in querys %}
-                <li class="list-group-item d-inline-block text-truncate"><a href={{query.url}}>{{ query.name }}</a></li>
+                <li class="list-group-item"><a href={{query.url}}>{{ query.name }}</a></li>
             {% endfor %}
         </ul>
         <a href="/" class="return-btn">Главное меню</a>
