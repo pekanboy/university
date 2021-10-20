@@ -19,7 +19,7 @@ dbConfig = {
   "db": "coursework"
 }
 
-provider = SQLProvider('./dbHandler/sql', dbConfig)
+provider = SQLProvider('./src/dbHandler/sql', dbConfig)
 
 
 @dbHandler.route('/')
