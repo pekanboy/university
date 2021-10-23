@@ -1,5 +1,8 @@
+import json
+
 from flask import Blueprint, request, render_template
 
+from access import group_validation_decorator, group_permission_validation_decorator
 from useMySql.sqlProvider import SQLProvider
 
 dbHandler = Blueprint('dbHandler', __name__, template_folder='templates')
@@ -15,13 +18,7 @@ config = [
     }
 ]
 
-dbConfig = {
-  "host": "localhost",
-  "port": 3306,
-  "user": "root",
-  "password": "",
-  "db": "university"
-}
+dbConfig = json.load(open('configs/db.json'))
 
 provider = SQLProvider('./dbHandler/sql', dbConfig)
 
@@ -32,6 +29,8 @@ def menu():
 
 
 @dbHandler.route('/all-clients-not-connect-for-period', methods=["GET", "POST"])
+@group_validation_decorator
+@group_permission_validation_decorator
 def allClientsNotConnectForPeriod():
     if request.method == "GET":
         return render_template('dbHandler/dateUser.html', description=config[0].get('name'))
@@ -45,6 +44,8 @@ def allClientsNotConnectForPeriod():
 
 
 @dbHandler.route('/all-services-where-price-bigger', methods=["GET", "POST"])
+@group_validation_decorator
+@group_permission_validation_decorator
 def allServicesWherePriceBigger():
     if request.method == "GET":
         return render_template('dbHandler/servicePriceBigger.html', description=config[1].get('name'))

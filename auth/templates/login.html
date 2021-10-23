@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+
+        input {
+            margin-top: 2px;
+        }
+
+        input {
+            height: 20px;
+        }
+
+        input[type='submit'] {
+            background: #0088cc;
+            color: black;
+            border: 0 solid;
+            border-radius: 4px;
+            width: 49%;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    <input type="text" name="login" placeholder="Введите пароль">
+    <input type="password" name="password" placeholder="Введите пароль">
+    <div class="buttons">
+            <input type="submit" name='sub' value="Войти">
+            <input type="submit" name='sub' value="Зарегистрироваться">
+    </div>
+</form>
+</body>
+</html>
