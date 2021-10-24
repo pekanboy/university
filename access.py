@@ -1,30 +1,19 @@
 from functools import wraps
-
-from flask import session, current_app, request
-
-
-def group_validation():
-    return bool(session.get('group'))
-
-
-def group_validation_decorator(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if group_validation():
-            return func(*args, **kwargs)
-        return 'Permission denied'
-
-    return wrapper
+from flask import session, current_app, request, render_template
 
 
 def group_permission_validation():
     access_config = current_app.config['ACCESS']
-    group = session.get('group', 'unauthorized')
+    group = session.get('sessionID', 'unauthorized')
 
     url = request.endpoint.split('.')
-    target_app = '' if len(url) == 1 else url[0]
 
-    return group in access_config and target_app in access_config[group]
+    target_app = url[0]
+    target_method = url[1]
+
+    return group in access_config \
+           and target_app in access_config[group] \
+           and target_method in access_config[group][target_app]
 
 
 def group_permission_validation_decorator(func):
@@ -32,6 +21,6 @@ def group_permission_validation_decorator(func):
     def wrapper(*args, **kwargs):
         if group_permission_validation():
             return func(*args, **kwargs)
-        return 'Permission denied'
+        return render_template('info.html', message='Отказано в доступе')
 
     return wrapper

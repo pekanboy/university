@@ -1,14 +1,40 @@
 {
-  "typical": [
-    "auth",
-    ""
-  ],
-  "admin": [
-    "dbHandler",
-    "auth",
-    ""
-  ],
-  "unauthorized": [
-    "auth"
-  ]
+  "common": {
+    "auth": [
+      "login"
+    ]
+  },
+  "advanced-user": {
+    "auth": [
+      "login"
+    ],
+    "dbHandler": [
+      "menu",
+      "allClientsNotConnectForPeriod"
+    ]
+  },
+  "advanced-service": {
+    "auth": [
+      "login"
+    ],
+    "dbHandler": [
+      "menu",
+      "allServicesWherePriceBigger"
+    ]
+  },
+  "admin": {
+    "auth": [
+      "login"
+    ],
+    "dbHandler": [
+      "menu",
+      "allServicesWherePriceBigger",
+      "allClientsNotConnectForPeriod"
+    ]
+  },
+  "unauthorized": {
+    "auth": [
+      "login"
+    ]
+  }
 }

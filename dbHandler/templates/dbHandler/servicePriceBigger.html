@@ -1,47 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Request</title>
+<title>Запрос 2</title>
 {% endblock %}
 
 {% block pagetitle %}
-    <div class="description">
-        {{ description }}
-    </div>
+<div class="description">
+    {{ description }}
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="query-menu">
-        <form class="query-form" action="{{ url_for('dbHandler.allServicesWherePriceBigger') }}" method="post">
-            <label>Enter the price</label>
-            <input type="number" placeholder="Enter the price" name="price" value={{vp}}>
-            <button type="submit">Get services</button>
-        </form>
-    </div>
-
-    <a href="/db" class="return-a">Query menu</a>
-
-    {% if isResponse %}
-        <div class="response-block">
-            {% if data %}
-                Response. Enter data: {{ vp }}
-                <table>
-                    <tr>
-                        <th>id</th>
-                        <th>name</th>
-                        <th>price</th>
-                    </tr>
-                    {% for user in data %}
-                        <tr style="margin-bottom: 10px">
-                            <th>{{ user.id }}</th>
-                            <th>{{ user.name }}</th>
-                            <th>{{ user.price_per_day }}</th>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% else %}
-                Noting was found
-            {% endif %}
+<div class="query-menu">
+    <form class="w-50 mx-auto" action="{{ url_for('dbHandler.allServicesWherePriceBigger') }}" method="post">
+        <div class="form-group">
+            <label for="price">Введите цену</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Введите цену">
         </div>
-    {% endif %}
+        <button type="submit" class="btn btn-primary mt-3 w-100">Найти сервис</button>
+    </form>
+</div>
+
+<a href="{{ url_for('dbHandler.menu') }}" class="return-btn">Меню запросов</a>
 {% endblock %}

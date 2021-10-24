@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Service</title>
+    <title>Работа с запросами</title>
 {% endblock %}
 
-{% block pagetitle %}Query`s menu{% endblock %}
+{% block pagetitle %}Меню запросов{% endblock %}
 
 {% block content %}
     <div class="query-menu">
-        <div class="query-menu__title">Basic queries</div>
-        <ol>
+        <div class="query-menu__title">Основные запросы</div>
+        <ul class="list-group list-group-numbered">
             {% for query in querys %}
-                <li><a href={{query.url}}>{{ query.name }}</a></li>
+                <li class="list-group-item"><a href={{query.url}}>{{ query.name }}</a></li>
             {% endfor %}
-        </ol>
-        <a href="/" class="return-a">Главное меню</a>
+        </ul>
+        <a href="/" class="return-btn">Главное меню</a>
     </div>
 {% endblock %}

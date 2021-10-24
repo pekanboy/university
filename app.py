@@ -1,8 +1,7 @@
 import json
 
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, current_app
 
-from access import group_permission_validation_decorator
 from auth.routes import auth
 from dbHandler.routes import dbHandler
 
@@ -15,17 +14,15 @@ app.config['ACCESS'] = json.load(open('configs/access.json'))
 
 
 @app.route('/')
-@group_permission_validation_decorator
 def index():
-    return render_template('index.html')
+    return render_template('index.html', isAuth=bool(session.get('sessionID')))
 
 
 @app.route('/exit')
-@group_permission_validation_decorator
 def exit():
-    session.clear()
-    return "Спасибо, до свидания!"
+    session.pop('sessionID')
+    return render_template('info.html', message='Спасибо, до свидания!')
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080)
+    app.run(host='localhost', port=8081)

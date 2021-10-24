@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Авторизация</title>
+{% endblock %}
+
+{% block pagetitle %}
+<div class="description">Авторизация</div>
+{% endblock %}
+
+{% block content %}
+<div class="query-menu">
+    <form class="w-50 mx-auto" action="{{url_for('auth.login')}}" method="post">
+        <div class="form-group">
+            <label for="login">Введите логин</label>
+            <input type="text" class="form-control" id="login" name="login" placeholder="Введите логин">
+        </div>
+        <div class="form-group">
+            <label for="password">Введите пароль</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 w-100">Sign in</button>
+    </form>
+
+    <a class="return-btn" href="{{url_for('index')}}">Главное меню</a>
+</div>
+{% endblock %}

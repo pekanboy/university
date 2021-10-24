@@ -1,9 +1,7 @@
-import json
-
 from flask import Blueprint, request, render_template
 
-from access import group_validation_decorator, group_permission_validation_decorator
-from useMySql.sqlProvider import SQLProvider
+from access import group_permission_validation_decorator
+from useMySql import getDataFromDataBase
 
 dbHandler = Blueprint('dbHandler', __name__, template_folder='templates')
 
@@ -18,38 +16,32 @@ config = [
     }
 ]
 
-dbConfig = json.load(open('configs/db.json'))
-
-provider = SQLProvider('./dbHandler/sql', dbConfig)
-
 
 @dbHandler.route('/')
+@group_permission_validation_decorator
 def menu():
     return render_template('dbHandler/menu.html', querys=config)
 
 
 @dbHandler.route('/all-clients-not-connect-for-period', methods=["GET", "POST"])
-@group_validation_decorator
 @group_permission_validation_decorator
 def allClientsNotConnectForPeriod():
     if request.method == "GET":
         return render_template('dbHandler/dateUser.html', description=config[0].get('name'))
-    if request.method == "POST":
-        before = request.form.get('before')
-        after = request.form.get('after')
 
-        sql = provider.get('dateUser.sql', before=before, after=after)
-        data = provider.exec(sql)
-        return render_template('dbHandler/dateUser.html', description=config[0].get('name'), isResponse=True, data=data, vb=before, va=after)
+    before = request.form.get('before')
+    after = request.form.get('after')
+
+    data = getDataFromDataBase('dateUser.sql', before=before, after=after)
+    return render_template('dbHandler/response.html', schema=data['schema'], result=data['result'])
 
 
 @dbHandler.route('/all-services-where-price-bigger', methods=["GET", "POST"])
-@group_validation_decorator
 @group_permission_validation_decorator
 def allServicesWherePriceBigger():
     if request.method == "GET":
         return render_template('dbHandler/servicePriceBigger.html', description=config[1].get('name'))
+
     price = int(request.form.get('price'))
-    sql = provider.get('servicePriceBigger.sql', price=price)
-    data = provider.exec(sql)
-    return render_template('dbHandler/servicePriceBigger.html', description=config[0].get('name'), isResponse=True, data=data, vp=price)
+    data = getDataFromDataBase('servicePriceBigger.sql', price=price)
+    return render_template('dbHandler/response.html', schema=data['schema'], result=data['result'])
