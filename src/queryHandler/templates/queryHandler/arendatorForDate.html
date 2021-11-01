@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Запрос</title>
+{% endblock %}
+
+{% block pagetitle %}
+<div class="description">
+    {{ description }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="query-menu">
+    <form class="query-form" action="{{url_for('queryHandler.arendatorForDate')}}" method="post">
+        <div class="form-floating">
+            <input type="date" class="form-control" id="date" name="date" required>
+            <label for="date">Введите дату</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Найти</button>
+    </form>
+    <a href="{{url_for('queryHandler.menu')}}" class="return-btn">Меню запросов</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    form = document.querySelector('.query-form')
+    form.addEventListener('submit', (event) => {
+        if (event.target.date.value.length === 0) {
+            event.preventDefault();
+        }
+        event.classList.add('was-validated')
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{
+  "common": {
+    "auth": [
+      "login"
+    ]
+  },
+  "advanced": {
+    "auth": [
+      "login"
+    ],
+    "queryHandler": [
+      "menu",
+      "arendatorForDate",
+      "arendatorForPrefixTelephone"
+    ]
+  },
+  "admin": {
+    "auth": [
+      "login"
+    ],
+    "queryHandler": [
+      "menu",
+      "arendatorForDate",
+      "arendatorForPrefixTelephone",
+      "billboardsForCost"
+    ]
+  },
+  "unauthorized": {
+    "auth": [
+      "login"
+    ]
+  }
+}

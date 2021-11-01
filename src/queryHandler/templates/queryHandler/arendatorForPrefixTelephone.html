@@ -12,17 +12,15 @@
 
 {% block content %}
 <div class="query-menu">
-    <form class="query-form" action="{{url_for('dbHandler.arendatorForDate')}}" method="post">
+    <form class="query-form" action="{{url_for('queryHandler.arendatorForPrefixTelephone')}}" method="post">
         <div class="form-floating">
-            <input type="date" class="form-control" id="date" name="date" required>
-            <label for="date">Введите дату</label>
+            <input type="number" class="form-control" id="prefix" name="prefix" required>
+            <label for="prefix">Введите префикс</label>
         </div>
         <button class="btn btn-primary" type="submit">Найти</button>
     </form>
-
-    <a href="/query" class="return-btn">Меню запросов</a>
+    <a href="{{url_for('queryHandler.menu')}}" class="return-btn">Меню запросов</a>
 </div>
-
 {% endblock %}
 
 {% block scripts %}
@@ -31,9 +29,7 @@
     form.addEventListener('submit', (event) => {
         if (event.target.date.value.length === 0) {
             event.preventDefault();
-
         }
-
         event.classList.add('was-validated')
     });
 </script>

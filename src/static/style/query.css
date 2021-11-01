@@ -19,11 +19,10 @@ form.query-form > button {
 }
 
 .return-btn {
+    display: inline-block;
     text-align: center;
-
-    margin: 10px auto 0;
-
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
 }
+

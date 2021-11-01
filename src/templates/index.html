@@ -11,7 +11,7 @@
     <div class="query-menu__title">Главное меню</div>
     <ul class="list-group list-group-numbered">
         <li class="list-group-item">
-            <a href={{url_for('dbHandler.menu')}}>Работа с запросами</a>
+            <a href={{url_for('queryHandler.menu')}}>Работа с запросами</a>
         </li>
         <li class="list-group-item">
             <a href="#" class="disabled" tabindex="-1">Работа с отчетами</a>
@@ -21,9 +21,9 @@
         </li>
         <li class="list-group-item">
             {% if not isAuth %}
-                <a href="#" class="disabled" tabindex="-1">Авторизироваться</a>
+                <a href="{{url_for('auth.login')}}" tabindex="-1">Авторизироваться</a>
             {% else %}
-                <a href="/exit">Выход</a>
+                <a href="{{url_for('exit')}}">Выход</a>
             {% endif %}
         </li>
     </ul>
