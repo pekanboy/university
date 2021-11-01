@@ -42,7 +42,7 @@ def arendatorForDate():
 @group_permission_validation_decorator
 def arendatorForPrefixTelephone():
     if request.method == "GET":
-        return render_template('queryHandler/arendatorForPrefixTelephone.html', description=config[0].get('name'))
+        return render_template('queryHandler/arendatorForPrefixTelephone.html', description=config[1].get('name'))
     if request.method == "POST":
         prefix = request.form.get('prefix')
         data = getDataFromDataBase('arendatorForPrefixTelephone.sql', prefix=prefix)
@@ -53,7 +53,7 @@ def arendatorForPrefixTelephone():
 @group_permission_validation_decorator
 def billboardsForCost():
     if request.method == "GET":
-        return render_template('queryHandler/billboardsForCost.html', description=config[0].get('name'))
+        return render_template('queryHandler/billboardsForCost.html', description=config[2].get('name'))
     if request.method == "POST":
         cost = request.form.get('cost')
         data = getDataFromDataBase('billboardsForCost.sql', cost=cost)
