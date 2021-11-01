@@ -3,10 +3,10 @@ import json
 from flask import Flask, render_template, session, current_app
 
 from auth.routes import auth
-from dbHandler.routes import dbHandler
+from queryHandler.routes import queryHandler
 
 app = Flask(__name__)
-app.register_blueprint(dbHandler, url_prefix='/db')
+app.register_blueprint(queryHandler, url_prefix='/db')
 app.register_blueprint(auth, url_prefix='/auth')
 
 app.config['SECRET_KEY'] = 'asdhashd32kgasd829ged'
@@ -20,9 +20,11 @@ def index():
 
 @app.route('/exit')
 def exit():
-    session.pop('sessionID')
-    return render_template('info.html', message='Спасибо, до свидания!')
+    if session.get('sessionID'):
+        session.pop('sessionID')
+        return render_template('info.html', message='Спасибо, до свидания!')
+    return render_template('info.html', message='Выход не выполнен, вы не авторизированы')
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8081)
+    app.run(host='localhost', port=8080)

@@ -2,7 +2,7 @@ import json
 from useMySql.sqlProvider import SQLProvider
 
 dbConfig = json.load(open('configs/db.json'))
-provider = SQLProvider('./dbHandler/sql', dbConfig)
+provider = SQLProvider('./queryHandler/sql', dbConfig)
 
 
 def getDataFromDataBase(file, **kwargs):

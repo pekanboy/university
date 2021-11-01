@@ -12,7 +12,7 @@
 
 {% block content %}
 <div class="query-menu">
-    <form class="w-50 mx-auto" action="{{ url_for('dbHandler.allServicesWherePriceBigger') }}" method="post">
+    <form class="w-50 mx-auto" action="{{ url_for('queryHandler.allServicesWherePriceBigger') }}" method="post">
         <div class="form-group">
             <label for="price">Введите цену</label>
             <input type="number" class="form-control" id="price" name="price" placeholder="Введите цену">
@@ -21,5 +21,5 @@
     </form>
 </div>
 
-<a href="{{ url_for('dbHandler.menu') }}" class="return-btn">Меню запросов</a>
+<a href="{{ url_for('queryHandler.menu') }}" class="return-btn">Меню запросов</a>
 {% endblock %}

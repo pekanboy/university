@@ -12,7 +12,7 @@
 
 {% block content %}
 <div class="query-menu">
-    <form class="w-50 mx-auto" action="{{ url_for('dbHandler.allClientsNotConnectForPeriod') }}" method="post">
+    <form class="w-50 mx-auto" action="{{ url_for('queryHandler.allClientsNotConnectForPeriod') }}" method="post">
         <div class="form-group">
             <label for="before">Введите начальную дату</label>
             <input type="date" class="form-control" id="before" name="before" placeholder="Введите начальную дату">
@@ -25,5 +25,5 @@
     </form>
 </div>
 
-<a href="{{ url_for('dbHandler.menu') }}" class="return-btn">Меню запросов</a>
+<a href="{{ url_for('queryHandler.menu') }}" class="return-btn">Меню запросов</a>
 {% endblock %}
