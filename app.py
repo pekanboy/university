@@ -2,12 +2,14 @@ import json
 
 from flask import Flask, render_template, session, current_app
 
+from edit.routes import editHandler
 from auth.routes import auth
 from queryHandler.routes import queryHandler
 
 app = Flask(__name__)
 app.register_blueprint(queryHandler, url_prefix='/db')
 app.register_blueprint(auth, url_prefix='/auth')
+app.register_blueprint(editHandler, url_prefix='/edit')
 
 app.config['SECRET_KEY'] = 'asdhashd32kgasd829ged'
 app.config['ACCESS'] = json.load(open('configs/access.json'))
@@ -32,4 +34,4 @@ def notFound(e):
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8020)
+    app.run(host='localhost', port=8050)

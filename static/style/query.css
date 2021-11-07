@@ -19,6 +19,7 @@ form.query-form > button {
 }
 
 .return-btn {
+    margin-top: 20px;
     display: inline-block;
     text-align: center;
     position: relative;
