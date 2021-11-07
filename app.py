@@ -26,5 +26,10 @@ def exit():
     return render_template('info.html', message='Выход не выполнен, вы не авторизированы')
 
 
+@app.errorhandler(404)
+def notFound(e):
+    return render_template('notFound.html'), 404
+
+
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080)
+    app.run(host='localhost', port=8020)
