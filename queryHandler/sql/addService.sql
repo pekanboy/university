@@ -1,0 +1,1 @@
+insert university.services(name, price_per_day) values ('$name', '$price');

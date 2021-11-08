@@ -18,7 +18,7 @@ class SQLProvider:
     def get(self, file_name, **kwargs):
         return self._scripts[file_name].substitute(**kwargs)
 
-    def exec(self, query):
+    def execWithData(self, query):
         with DBConnection(self._config) as cursor:
             if cursor is None:
                 raise ValueError('Cursor is None')
@@ -34,3 +34,9 @@ class SQLProvider:
                     "schema": schema,
                     "result": result
                 }
+
+    def execWithoutData(self, query):
+        with DBConnection(self._config) as cursor:
+            if cursor is None:
+                raise ValueError('Cursor is None')
+            return cursor.execute(query)

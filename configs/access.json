@@ -32,7 +32,10 @@
       "allClientsNotConnectForPeriod"
     ],
     "editHandler": [
-      "menu"
+      "menu",
+      "services",
+      "add",
+      "change"
     ]
   },
   "unauthorized": {

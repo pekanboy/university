@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Добавление</title>
+{% endblock %}
+
+{% block pagetitle %}
+<div class="description">Изменение сервиса</div>
+{% endblock %}
+
+{% block content %}
+<div class="query-menu">
+    <form class="w-50 mx-auto" action="{{ url_for('editHandler.change', id=id, name=name, price=price) }}" method="post">
+        <div class="form-group">
+            <label for="before">Название</label>
+            <input type="text" class="form-control" id="before" value="{{name}}" name="name" placeholder="Введите название">
+        </div>
+        <div class="form-group">
+            <label for="after">Цена за день</label>
+            <input type="number" class="form-control" id="after" value="{{price}}" name="price" placeholder="Введите цену за день">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 w-100">Изменить</button>
+    </form>
+</div>
+
+<a href="{{ url_for('editHandler.services') }}" class="return-btn">Отменить выбор</a>
+{% endblock %}

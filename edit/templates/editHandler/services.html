@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title xmlns="http://www.w3.org/1999/html">Результат</title>
+{% endblock %}
+
+{% block pagetitle %}Результат запроса{% endblock %}
+
+{% block styles %}
+<style>
+    input:disabled {
+        border: none;
+        background-color: transparent;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="query-menu" style="max-width: 1000px">
+    <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                {% for col in schema %}
+                    <th scope="col">{{col}}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% if result %}
+            {% for row in result %}
+                <tr>
+                    <form class="rowService">
+                        {% for el in row %}
+                            <td>
+                                <input type="text" value="{{row[el]}}" disabled>
+                            </td>
+                        {% endfor %}
+                        <div class="change">
+                            <td>
+                                <button type="submit" class="btn btn-light" name="change">Изменить</button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-danger" name="delete">Удалить</button>
+                            </td>
+                        </div>
+                    </form>
+                </tr>
+            {% endfor %}
+            {% endif %}
+
+                <tr>
+                    <td class="text-center" colspan="5">
+                        <a role="button" href="/edit/services-add" class='btn btn-outline-primary'>Добавить</a>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+</div>
+<a class="return-btn" href="{{ url_for('editHandler.menu') }}">К меню редактирования</a>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function deleteHandler() {
+        const formServces = document.querySelectorAll('.rowService');
+
+        formServces.forEach((form) => {
+            form.addEventListener('submit', async (event) => {
+                const isChange = event.submitter.innerText === 'Изменить'
+
+                if (isChange) {
+                    event.preventDefault();
+                    window.location = `/edit/services-change?id=${event.target[0].value}&name=${event.target[1].value}&price=${event.target[2].value}`
+                    return
+                }
+                event.preventDefault();
+                const res = await fetch('/edit/services', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify({
+                        id: event.target[0].value,
+                        name: event.target[1].value,
+                        price: event.target[2].value,
+                        type: isChange ? 'change':'delete'
+                    })
+                });
+
+
+                if (!res.ok) {
+                    alert('Ошибка сервера');
+                }
+
+                event.target.parentNode.remove();
+
+            })
+        });
+    }
+
+    deleteHandler();
+</script>
+{% endblock %}

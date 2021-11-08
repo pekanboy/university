@@ -34,4 +34,4 @@ def notFound(e):
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8050)
+    app.run(host='localhost', port=8075)
