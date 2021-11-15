@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Редактирование</title>
+{% endblock %}
+
+{% block pagetitle %}Редактировать базу данных{% endblock %}
+
+{% block content %}
+    <div class="query-menu">
+        <div class="query-menu__title">Базы данных</div>
+        <ul class="list-group list-group-numbered">
+            {% for db in data_bases %}
+                <li class="list-group-item"><a href={{db.url}}>{{ db.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="return-btn">Главное меню</a>
+    </div>
+{% endblock %}

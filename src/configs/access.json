@@ -23,6 +23,12 @@
       "arendatorForDate",
       "arendatorForPrefixTelephone",
       "billboardsForCost"
+    ],
+    "editHandler": [
+      "menu",
+      "billboards",
+      "change",
+      "add"
     ]
   },
   "unauthorized": {

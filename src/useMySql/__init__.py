@@ -13,3 +13,9 @@ def getDataFromDataBase(file, **kwargs):
         data['result'] = None
 
     return data
+
+
+def execute(file, **kwargs):
+    sql = provider.get(file, **kwargs)
+    res = provider.execWithoutData(sql)
+    return res == 1

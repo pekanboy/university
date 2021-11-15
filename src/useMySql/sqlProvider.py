@@ -34,3 +34,9 @@ class SQLProvider:
                     "schema": schema,
                     "result": result
                 }
+
+    def execWithoutData(self, query):
+        with DBConnection(self._config) as cursor:
+            if cursor is None:
+                raise ValueError('Cursor is None')
+            return cursor.execute(query)
