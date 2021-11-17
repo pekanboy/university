@@ -78,6 +78,13 @@
                     return
                 }
                 event.preventDefault();
+
+                const isConfim = confirm("Подтвердите действие");
+
+                if (!isConfim) {
+                    return
+                }
+
                 const res = await fetch('/edit/billboards', {
                     method: 'POST',
                     headers: {
