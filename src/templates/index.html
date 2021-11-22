@@ -20,7 +20,7 @@
             <a href="#" class="disabled" tabindex="-1">Работа с отчетами</a>
         </li>
         <li class="list-group-item">
-            <a href="#" class="disabled" tabindex="-1">Работа с бизнес процессом</a>
+            <a href={{url_for('basketHandler.enter')}} tabindex="-1">Работа с бизнес процессом</a>
         </li>
         <li class="list-group-item">
             {% if not isAuth %}

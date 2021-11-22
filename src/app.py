@@ -3,6 +3,7 @@ import json
 from flask import Flask, render_template, session, current_app
 
 from src.auth.routes import auth
+from src.basket.routes import basketHandler
 from src.edit.routes import editHandler
 from src.queryHandler.routes import queryHandler
 
@@ -10,9 +11,10 @@ app = Flask(__name__)
 app.register_blueprint(queryHandler, url_prefix='/db')
 app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(editHandler, url_prefix='/edit')
+app.register_blueprint(basketHandler, url_prefix='/basket')
 
 app.config['SECRET_KEY'] = 'asdhashd32kgasd829ged'
-app.config['ACCESS'] = json.load(open('src/configs/access.json'))
+app.config['ACCESS'] = json.load(open('configs/access.json'))
 
 
 @app.route('/')
@@ -29,4 +31,4 @@ def exit():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8082)
+    app.run(host='localhost', port=8084)

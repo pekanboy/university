@@ -29,6 +29,13 @@
       "billboards",
       "change",
       "add"
+    ],
+    "basketHandler": [
+      "enter",
+      "add",
+      "cancel",
+      "clear",
+      "send"
     ]
   },
   "unauthorized": {

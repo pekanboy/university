@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Корзина</title>
+{% endblock %}
+
+{% block pagetitle %}
+<div class="description">Аренда</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      Доступные биллборды
+      {% for bill in all_billboards %}
+      <div class="card">
+        <div class="card-header">
+          Билборд №{{bill['ID']}}
+        </div>
+        <div class="card-body">
+          <form action="{{ url_for('basketHandler.add')}}" method="post">
+            <p class="card-text">
+              Цена: {{bill['Цена']}}
+            </p>
+            <input type="hidden" name="id" value="{{bill['ID']}}">
+            <button class="btn btn-primary">Добавить в корзину</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-4">
+      Выбранные биллбоды
+      {% for bill in billboards_in_order %}
+      <div class="card">
+        <div class="card-header">
+          Билборд №{{bill['ID']}}
+        </div>
+        <div class="card-body">
+          <form action="{{ url_for('basketHandler.cancel')}}" method="post">
+            <p class="card-text">
+              Цена: {{bill['Цена']}}
+  <!--            <div>-->
+  <!--              <input type="number" class="form-control" name="date" placeholder="Введите дату начала аренды">-->
+  <!--            </div>-->
+            </p>
+            <input type="hidden" name="id" value="{{bill['ID']}}">
+            <button class="btn btn-secondary">Отменить выбор</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-4 d-flex flex-column">
+      Действия
+      <form action="{{ url_for('basketHandler.clear')}}" method="post">
+        <button type="submit" class="btn btn-info w-100">Отчистить корзину</button>
+      </form>
+      <form action="{{ url_for('basketHandler.send')}}" method="post">
+        <button type="submit" class="btn btn-info mt-1 w-100">Оформить заказ</button>
+      </form>
+      <a href="/" class="btn btn-info mt-1">Вернуться в главное меню</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

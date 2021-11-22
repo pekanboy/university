@@ -1,0 +1,1 @@
+DELETE FROM `coursework`.`string_order` WHERE (`ord_id` = '$id');

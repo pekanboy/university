@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect
 
 from src.access import group_permission_validation_decorator
 from src.useMySql import getDataFromDataBase, execute
