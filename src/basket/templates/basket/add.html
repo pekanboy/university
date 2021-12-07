@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Корзина</title>
+{% endblock %}
+
+{% block pagetitle %}
+<div class="description">Выбор билборда</div>
+{% endblock %}
+
+{% block content %}
+<div class="query-menu">
+    <form class="w-50 mx-auto" action="{{ url_for('basketHandler.select') }}" method="post">
+        <input type="hidden" name="id" value="{{id}}">
+        <div class="form-group">
+            <label for="start_date">Введите дату начала аренды</label>
+            <input type="date" class="form-control" id="start_date" value="{{start}}" name="start_date" placeholder="Введите дату установки">
+        </div>
+       <div class="form-group">
+            <label for="end_date">Введите дату конца аренды</label>
+            <input type="date" class="form-control" id="end_date" value="{{end}}" name="end_date" placeholder="Введите дату установки">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 w-100">Выбрать</button>
+        {% if mes %}
+            <div class="mt-1 text-danger">{{mes}}</div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

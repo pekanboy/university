@@ -24,12 +24,18 @@ config = [
 @queryHandler.route('/')
 @group_permission_validation_decorator
 def menu():
+    """
+    Функция отрисовки мекнб запросов
+    """
     return render_template('queryHandler/menu.html', querys=config)
 
 
 @queryHandler.route('/arendator-for-date', methods=["GET", "POST"])
 @group_permission_validation_decorator
 def arendatorForDate():
+    """
+    Обработчик для запроса arendatorForDate
+    """
     if request.method == "GET":
         return render_template('queryHandler/arendatorForDate.html', description=config[0].get('name'))
     if request.method == "POST":
@@ -41,6 +47,9 @@ def arendatorForDate():
 @queryHandler.route('/arendator-for-prefix-telephone', methods=["GET", "POST"])
 @group_permission_validation_decorator
 def arendatorForPrefixTelephone():
+    """
+    Обработчик для запроса arendatorForPrefixTelephone
+    """
     if request.method == "GET":
         return render_template('queryHandler/arendatorForPrefixTelephone.html', description=config[1].get('name'))
     if request.method == "POST":
@@ -52,6 +61,9 @@ def arendatorForPrefixTelephone():
 @queryHandler.route('/billboards-for-cost', methods=["GET", "POST"])
 @group_permission_validation_decorator
 def billboardsForCost():
+    """
+    Обработчик для запроса billboardsForCost
+    """
     if request.method == "GET":
         return render_template('queryHandler/billboardsForCost.html', description=config[2].get('name'))
     if request.method == "POST":

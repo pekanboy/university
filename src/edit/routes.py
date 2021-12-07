@@ -18,12 +18,19 @@ config = [
 @editHandler.route('/')
 @group_permission_validation_decorator
 def menu():
+    """
+    Отрисовка меню редактирования БД
+    """
     return render_template('editHandler/menu.html', data_bases=config)
 
 
 @editHandler.route('/billboards', methods=['GET', 'POST'])
 @group_permission_validation_decorator
 def billboards():
+    """
+    Отрисовка таблицы базы данных билбордов и обработчик
+    на удаление записи из таблицы
+    """
     if request.method == "GET":
         data = getDataFromDataBase('getAllBillboards.sql')
         return render_template('editHandler/billboards.html', schema=data['schema'], result=data['result'])
@@ -39,6 +46,9 @@ def billboards():
 @editHandler.route('/billboard-add', methods=['GET', 'POST'])
 @group_permission_validation_decorator
 def add():
+    """
+    Обработчик добавления записи в базу данных
+    """
     if request.method == 'GET':
         return render_template('editHandler/add.html')
     if request.method == 'POST':
@@ -50,11 +60,12 @@ def add():
         return redirect('/edit/billboards')
 
 
-
-
 @editHandler.route('/billboard-change', methods=['GET', 'POST'])
 @group_permission_validation_decorator
 def change():
+    """
+    Обработчик изменения строки в БД
+    """
     id = request.args.get('id')
 
     if request.method == 'GET':

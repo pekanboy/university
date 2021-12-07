@@ -19,9 +19,13 @@
           Билборд №{{bill['ID']}}
         </div>
         <div class="card-body">
-          <form action="{{ url_for('basketHandler.add')}}" method="post">
+          <form action="{{ url_for('basketHandler.add_billboard')}}" method="post">
             <p class="card-text">
-              Цена: {{bill['Цена']}}
+              <ul>
+                <li>Цена: {{bill['Цена']}}</li>
+                <li>Адрес: {{bill['Адрес']}}</li>
+                <li>Площадь: {{bill['Площадь']}}</li>
+              </ul>
             </p>
             <input type="hidden" name="id" value="{{bill['ID']}}">
             <button class="btn btn-primary">Добавить в корзину</button>
@@ -40,10 +44,11 @@
         <div class="card-body">
           <form action="{{ url_for('basketHandler.cancel')}}" method="post">
             <p class="card-text">
-              Цена: {{bill['Цена']}}
-  <!--            <div>-->
-  <!--              <input type="number" class="form-control" name="date" placeholder="Введите дату начала аренды">-->
-  <!--            </div>-->
+              <ul>
+                <li>Цена: {{bill['Цена']}}</li>
+                <li>Адрес: {{bill['Адрес']}}</li>
+                <li>Площадь: {{bill['Площадь']}}</li>
+              </ul>
             </p>
             <input type="hidden" name="id" value="{{bill['ID']}}">
             <button class="btn btn-secondary">Отменить выбор</button>

@@ -3,6 +3,10 @@ from flask import session, current_app, request, render_template
 
 
 def group_permission_validation():
+    """
+    Проверка наличия доступа к определенномуц обработчику
+    :return: Boolean: Доступ разрешен или нет
+    """
     access_config = current_app.config['ACCESS']
     group = session.get('sessionID', 'unauthorized')
 
@@ -17,6 +21,10 @@ def group_permission_validation():
 
 
 def group_permission_validation_decorator(func):
+    """
+    Декоратор для проверки доступа к определенном обработчику
+    :param func: Выполняемый обработчик
+    """
     @wraps(func)
     def wrapper(*args, **kwargs):
         if group_permission_validation():

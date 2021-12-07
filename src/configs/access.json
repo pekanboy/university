@@ -1,19 +1,4 @@
 {
-  "common": {
-    "auth": [
-      "login"
-    ]
-  },
-  "advanced": {
-    "auth": [
-      "login"
-    ],
-    "queryHandler": [
-      "menu",
-      "arendatorForDate",
-      "arendatorForPrefixTelephone"
-    ]
-  },
   "admin": {
     "auth": [
       "login"
@@ -32,7 +17,8 @@
     ],
     "basketHandler": [
       "enter",
-      "add",
+      "add_billboard",
+      "select",
       "cancel",
       "clear",
       "send"

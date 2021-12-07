@@ -34,7 +34,7 @@
                     <form class="rowService" action="" method="post">
                         {% for el in row %}
                             <td>
-                                <input style="width: 150px" type="text" value="{{row[el]}}" disabled>
+                                <input style="width: 150px; overflow: scroll;" type="text" value="{{row[el]}}" disabled>
                             </td>
                         {% endfor %}
                         <input type="hidden" name="id" value={{row['ID']}}>

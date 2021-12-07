@@ -9,6 +9,12 @@ auth = Blueprint('auth', __name__, template_folder='templates')
 @auth.route('/login', methods=['GET', 'POST'])
 @group_permission_validation_decorator
 def login():
+    """
+    Функция отображает форму авторизации и при вводе
+    входных данных авторизирует пользователя в системе, путем
+    добавления роли в сессию
+    :return: Template
+    """
     if request.method == 'GET':
         return render_template('auth/login.html')
 
