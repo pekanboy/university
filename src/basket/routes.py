@@ -12,7 +12,8 @@ basketHandler = Blueprint('basketHandler', __name__, template_folder='templates'
 @group_permission_validation_decorator
 def enter():
     if request.method == 'GET':
-        return render_template('basket/enter.html')
+        arendators = getDataFromDataBase('getArendators.sql')
+        return render_template('basket/enter.html', arendators=arendators['result'])
 
     id = request.form.get('id')
     start_date = request.form.get('start_date')
